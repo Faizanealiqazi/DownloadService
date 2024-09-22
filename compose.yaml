@@ -1,8 +1,5 @@
-version: '3'
 services:
   download-service:
     build: .
     ports:
       - "8080:8080"
-    volumes:
-      - ./mydatabase.sqlite:/app/mydatabase.sqlite
