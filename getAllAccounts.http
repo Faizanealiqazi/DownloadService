@@ -1,3 +1,1 @@
 GET http://localhost:8080/accounts/getAllAccounts
-
-GET http://localhost:8080/accounts/checkStatus
