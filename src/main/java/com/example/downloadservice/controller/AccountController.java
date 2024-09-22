@@ -2,6 +2,7 @@ package com.example.downloadservice.controller;
 
 import com.example.downloadservice.model.Account;
 import com.example.downloadservice.service.AccountService;
+import com.example.downloadservice.service.DownloadService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.List;
 public class AccountController {
 
     private final AccountService accountService;
+    private final DownloadService downloadService;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService, DownloadService downloadService) {
         this.accountService = accountService;
+        this.downloadService = downloadService;
     }
 
     @GetMapping("/getAllAccounts")
@@ -24,6 +27,11 @@ public class AccountController {
     @PostMapping("/createAccount")
     public Account createAccount(@RequestBody Account account) {
         return accountService.addAccount(account);
+    }
+    @GetMapping("/startDownload")
+    public String startDownload() {
+        downloadService.getAllAccounts();
+        return "Download process started!";
     }
 
     @GetMapping("/checkStatus")
