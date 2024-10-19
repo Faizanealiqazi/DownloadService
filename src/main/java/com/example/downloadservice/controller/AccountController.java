@@ -3,11 +3,13 @@ package com.example.downloadservice.controller;
 import com.example.downloadservice.model.Account;
 import com.example.downloadservice.service.AccountService;
 import com.example.downloadservice.service.DownloadService;
+import com.example.downloadservice.utils.annotation.Logging;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Logging
 @RequestMapping("/accounts")
 public class AccountController {
 

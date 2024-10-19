@@ -1,0 +1,20 @@
+<configuration>
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <lokiUrl>http://localhost:3100/loki/api/v1/push</lokiUrl>
+        <batchSize>10</batchSize>
+        <timeoutMs>2000</timeoutMs>
+        <logLevel>INFO</logLevel>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{nodeId}] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.example" level="DEBUG" additivity="false">
+        <appender-ref ref="LOKI" />
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="LOKI" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
